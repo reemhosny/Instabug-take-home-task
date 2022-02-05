@@ -16,6 +16,7 @@ import {
   VisualMapComponent,
 } from "echarts/components";
 import VChart from "vue-echarts";
+import store from "../../store/index";
 
 use([
   CanvasRenderer,
@@ -69,6 +70,10 @@ export default {
   },
 
   computed: {
+    chartPerformance() {
+      return store.getters.allChartPerformance;
+    },
+
     initOptions() {
       return {
         width: "auto",
@@ -83,7 +88,7 @@ export default {
           left: "center",
         },
         tooltip: {
-          trigger: 'axis',
+          trigger: "axis",
           transitionDuration: 0,
           confine: false,
           hideDelay: 0,
@@ -131,11 +136,11 @@ export default {
     },
 
     xAxisData() {
-      return this.chartData.map((item) => this.formatDate(item.date_ms));
+      return this.chartPerformance.map((item) => this.formatDate(item.date_ms));
     },
 
     yAxisData() {
-      return this.chartData.map((item) => +item.performance * 100);
+      return this.chartPerformance.map((item) => +item.performance * 100);
     },
   },
 
@@ -143,6 +148,9 @@ export default {
     formatDate(dateInMs) {
       return moment(dateInMs).format("DD MMM YYYY");
     },
+  },
+  created() {
+    store.dispatch("getChartPerformance");
   },
 };
 </script>
