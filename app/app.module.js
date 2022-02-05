@@ -1,5 +1,19 @@
 import Vue from "vue";
 import store from "./store/index";
+
+import { DatePicker } from "element-ui";
+Vue.component(DatePicker.name, DatePicker);
+import lang from "element-ui/lib/locale/lang/en";
+import locale from "element-ui/lib/locale";
+
+// configure language
+locale.use(lang);
+
+// import ElementUI from "element-ui";
+// import "@/element-ui/lib/theme-chalk/index.css";
+// import locale from "element-ui/lib/locale/lang/en";
+// Vue.use(ElementUI, { locale });
+
 import "ngVue";
 import "ngVue/build/plugins.js";
 import PerformancePageComponent from "./pages/performance-page.vue";
