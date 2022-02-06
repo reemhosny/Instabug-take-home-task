@@ -17,6 +17,7 @@ locale.use(lang);
 import "ngVue";
 import "ngVue/build/plugins.js";
 import PerformancePageComponent from "./pages/performance-page.vue";
+import NotFoundPageComponent from "./pages/not-found-page.vue";
 import PerformanceChartComponent from "./components/vue-components/performance-chart.vue";
 
 angular
@@ -24,6 +25,12 @@ angular
   .config(($ngVueProvider) => {
     $ngVueProvider.setRootVueInstanceProps({ store: store });
   });
+
+angular.module("appModule").directive("vNotFoundPage", (createVueComponent) => {
+  return createVueComponent(
+    Vue.component("NotFoundPageComponent", NotFoundPageComponent)
+  );
+});
 
 angular
   .module("appModule")

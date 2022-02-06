@@ -1,48 +1,48 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   entry: {
-    index: './index.js',
+    index: "./index.js",
   },
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Development',
-      template: 'app/index.html',
-      filename: 'index.html',
+      title: "Development",
+      template: "app/index.html",
+      filename: "index.html",
     }),
     new ESLintPlugin({
       failOnError: true,
       emitWarning: false,
-      outputReport: true
+      outputReport: true,
     }),
     new VueLoaderPlugin(),
   ],
   devServer: {
-    static: './dist',
+    static: "./dist",
     hot: true,
   },
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
     clean: true,
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: "vue-loader",
       },
       {
         test: /\.(html)$/,
         exclude: [/node_modules/],
         use: [
           {
-            loader: 'html-loader',
+            loader: "html-loader",
             options: {
               minimize: true,
               esModule: false,
@@ -55,15 +55,15 @@ module.exports = {
         exclude: [/node_modules/],
         use: [
           {
-            loader: 'angularjs-template-loader',
+            loader: "angularjs-template-loader",
             options: {
-              relativeTo: path.resolve(__dirname, './app'),
+              relativeTo: path.resolve(__dirname, "./app"),
             },
           },
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
-              presets: ['@babel/preset-env'],
+              presets: ["@babel/preset-env"],
             },
           },
         ],
@@ -73,21 +73,22 @@ module.exports = {
         exclude: [/vue-components|views/],
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: 'styles/[name].css',
+              name: "styles/[name].css",
             },
           },
           {
-            loader: 'extract-loader',
+            loader: "extract-loader",
             options: {
-              publicPath: '../',
+              publicPath: "../",
             },
           },
-          'css-loader',
-          'sass-loader',
+          "css-loader",
+          "sass-loader",
         ],
       },
+
       // https://vue-loader.vuejs.org/guide/pre-processors.html
       // this will apply to both plain `.scss` files
       // AND `<style lang="scss">` blocks in `.vue` files
