@@ -7,14 +7,15 @@
   .c-users-list__header {
     display: table-row;
     font-size: 16px;
-    font-weight: 500;
-    background-color: #e5e9f1;
+    font-weight: 600;
+    color: white;
+    background-color: #37304b;
 
     > div {
       display: table-cell;
       text-align: center;
       vertical-align: middle;
-      font-size: 14px;
+      font-size: 15px;
     }
   }
 
@@ -27,6 +28,11 @@
       padding: 0 8px;
       vertical-align: middle;
     }
+  }
+
+  .c-users-list__body:nth-child(odd) {
+    color: #636363;
+    background-color: #f5f5f5;
   }
 
   .c-users-list__avatar {
