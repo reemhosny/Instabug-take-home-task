@@ -1,6 +1,4 @@
-angular
-  .module('appModule')
-  .controller('homeController', homePageController);
+angular.module("appModule").controller("homeController", homePageController);
 
 function homePageController(Employees) {
   const homePageVm = this;
@@ -9,9 +7,17 @@ function homePageController(Employees) {
   activate();
 
   function activate() {
-    Employees.getEmployees()
-      .then(({ data }) => {
-        homePageVm.employees = homePageVm.employees.concat(data.employees);
-      });
+    Employees.getEmployees().then(({ data }) => {
+      homePageVm.employees = homePageVm.employees.concat(data.employees);
+    });
   }
+
+  ///Load More Controller
+  homePageVm.loadMore = function () {
+    homePageVm.pagesShown = 10;
+    Employees.loadMoreEmployees(homePageVm.pagesShown).then(({ data }) => {
+      homePageVm.employees = homePageVm.employees.concat(data.employees);
+      homePageVm.pagesShown = +5;
+    });
+  };
 }
