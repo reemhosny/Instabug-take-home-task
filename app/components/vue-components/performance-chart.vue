@@ -120,6 +120,16 @@ export default {
           axisTick: { show: true },
           splitLine: { show: true },
         },
+        visualMap: {
+          right: 30,
+          top: 66,
+          bottom: 0,
+          pieces: [
+            { min: 0, max: 50, label: "0-50", color: "#FF0000" },
+            { min: 50, max: 80, label: "50-80", color: "#FFFF00" },
+            { min: 80, label: "80-100", color: "#00FF00" },
+          ],
+        },
         series: [
           {
             data: this.yAxisData,
