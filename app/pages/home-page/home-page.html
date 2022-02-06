@@ -3,7 +3,10 @@
 
   <employees-list employees-list="homePageVm.employees"></employees-list>
 
-  <div class="c-dashboard__footer">
+  <div class="c-dashboard__footer" ng-if="!homePageVm.loading">
     <button class="c-button" ng-click="homePageVm.loadMore()">Load More</button>
+  </div>
+  <div class="c-dashboard__footer" ng-if="homePageVm.loading">
+    <button class="c-button">Loading...</button>
   </div>
 </div>
