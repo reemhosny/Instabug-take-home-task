@@ -4,6 +4,7 @@ function homePageController(Employees) {
   const homePageVm = this;
   homePageVm.employees = [];
   homePageVm.loading = false;
+  homePageVm.totalPages = null;
 
   activate();
 
@@ -19,6 +20,7 @@ function homePageController(Employees) {
     homePageVm.loading = true;
     Employees.loadMoreEmployees(homePageVm.pagesShown).then(({ data }) => {
       homePageVm.loading = false;
+      homePageVm.totalPages = data.pages;
       homePageVm.employees = homePageVm.employees.concat(data.employees);
       homePageVm.pagesShown = +5;
     });
