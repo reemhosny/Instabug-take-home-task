@@ -1,13 +1,15 @@
 <div class="c-dashboard">
-  <div class="c-filters__container">
-    [Place search component here]
-  </div>
+  <div class="c-filters__container">[Place search component here]</div>
 
   <employees-list employees-list="homePageVm.employees"></employees-list>
 
-  <div class="c-dashboard__footer">
-    <button class="c-button">
-      Load More
-    </button>
+  <div
+    class="c-dashboard__footer"
+    ng-if="!homePageVm.loading || homePageVm.totalPages == 0"
+  >
+    <button class="c-button" ng-click="homePageVm.loadMore()">Load More</button>
+  </div>
+  <div class="c-dashboard__footer" ng-if="homePageVm.loading">
+    <button class="c-button">Loading...</button>
   </div>
 </div>
