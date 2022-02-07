@@ -16,7 +16,6 @@ import {
   VisualMapComponent,
 } from "echarts/components";
 import VChart from "vue-echarts";
-import store from "../../store/index";
 
 use([
   CanvasRenderer,
@@ -71,7 +70,7 @@ export default {
 
   computed: {
     chartPerformance() {
-      return store.getters.allChartPerformance;
+      return this.$store.getters.allChartPerformance;
     },
 
     initOptions() {
@@ -160,7 +159,7 @@ export default {
     },
   },
   created() {
-    store.dispatch("getChartPerformance");
+    this.$store.dispatch("getChartPerformance");
   },
 };
 </script>

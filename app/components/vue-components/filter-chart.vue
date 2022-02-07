@@ -6,6 +6,7 @@
       range-separator="To"
       start-placeholder="Start month"
       end-placeholder="End month"
+      value-format="timestamp"
       @change="filterChartPerformance()"
     >
     </el-date-picker>
@@ -13,13 +14,13 @@
 </template>
 
 <script>
-import store from "../../store/index";
 export default {
   name: "filterChartComponent",
 
   data() {
     return {
       value: "",
+      chartData: [],
       pickerOptions: {
         shortcuts: [
           {
@@ -51,18 +52,17 @@ export default {
   },
   computed: {
     chartPerformance() {
-      return store.getters.allChartPerformance;
+      return this.$store.getters.allChartPerformance;
     },
   },
   methods: {
     filterChartPerformance() {
       if (this.value) {
         return this.chartPerformance.filter((item) => {
-          console.log("item", item.date_ms);
-          return item.date_ms;
+          this.$store.dispatch("getChartPerformance", item);
         });
       } else {
-        return this.chartPerformance;
+        return this.$store.dispatch("getChartPerformance");
       }
     },
   },

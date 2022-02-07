@@ -13,14 +13,6 @@ export default {
 
   getters: {
     allChartPerformance: (state) => state.chartPerformance,
-
-    // filterChartPerformance: (state, date) => (date) => {
-    //   return state.chartPerformance.filter(
-    //     (item) => chartPerformance.item === item.date
-    //   );
-
-    //   console.log("this is item", item);
-    // },
   },
 
   actions: {
@@ -31,5 +23,10 @@ export default {
           commit("Set_ChartPerformance", response.data);
         });
     },
+    // filterChartPerformance({commit}){
+    //   state.getters.allChartPerformance.filter(item => {
+
+    //   })
+    // }
   },
 };
