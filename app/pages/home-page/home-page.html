@@ -1,5 +1,11 @@
 <div class="c-dashboard">
-  <div class="c-filters__container">[Place search component here]</div>
+  <div class="c-filters__container">
+    <input
+      class="c-filters__text"
+      ng-model="searchText"
+      placeholder="Search employees..."
+    />
+  </div>
 
   <employees-list employees-list="homePageVm.employees"></employees-list>
 

@@ -5,6 +5,7 @@ function homePageController(Employees) {
   homePageVm.employees = [];
   homePageVm.loading = false;
   homePageVm.totalPages = null;
+  homePageVm.searchText = "";
 
   activate();
 
@@ -24,5 +25,21 @@ function homePageController(Employees) {
       homePageVm.employees = homePageVm.employees.concat(data.employees);
       homePageVm.pagesShown = +5;
     });
+  };
+
+  ///Search Employees
+
+  homePageVm.filterList = function (text) {
+    if (homePageVm.searchText) {
+      return homePageVm.employees.filter((item) => {
+        console.log(" item.profile", item.profile);
+        return homePageVm.searchText
+          .toLowerCase()
+          .split(" ")
+          .every((v) => item.profile.name.toLowerCase().includes(text));
+      });
+    } else {
+      return homePageVm.employees;
+    }
   };
 }

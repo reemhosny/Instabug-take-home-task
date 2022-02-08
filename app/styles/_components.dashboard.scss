@@ -32,8 +32,14 @@
 .c-filters__container {
   margin: 0 0 8px;
   padding: 16px 8px;
+}
+
+.c-filters__text {
   border: 1px solid #dcdee3;
   background-color: #e5e9f1;
+  font-size: 13px;
+  padding: 8px;
+  border-radius: 3px;
 }
 
 .c-chart__container {
